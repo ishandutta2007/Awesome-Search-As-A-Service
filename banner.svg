@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#1f1035" />
+    </linearGradient>
+
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#4facfe" stop-opacity="0.2" />
+    </linearGradient>
+
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <style>
+    .title {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-weight: 800;
+      font-size: 52px;
+      fill: url(#accentGrad);
+    }
+    .subtitle {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      fill: #94a3b8;
+      letter-spacing: 1.5px;
+    }
+    .pulse-ring {
+      animation: ringPulse 4s infinite ease-in-out;
+      transform-origin: center;
+    }
+    .scan-line {
+      animation: scanMove 3s infinite alternate ease-in-out;
+    }
+    .floating-particle {
+      animation: float 6s infinite ease-in-out;
+    }
+    @keyframes ringPulse {
+      0% { r: 18px; opacity: 0.8; }
+      50% { r: 28px; opacity: 0.2; }
+      100% { r: 18px; opacity: 0.8; }
+    }
+    @keyframes scanMove {
+      0% { transform: translateX(0px); }
+      100% { transform: translateX(280px); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="1200" height="320" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Decorative Grid & Dynamic Network Graphics -->
+  <g opacity="0.15" stroke="#94a3b8" stroke-width="1">
+    <line x1="0" y1="80" x2="1200" y2="80" stroke-dasharray="6,6" />
+    <line x1="0" y1="160" x2="1200" y2="160" stroke-dasharray="6,6" />
+    <line x1="0" y1="240" x2="1200" y2="240" stroke-dasharray="6,6" />
+    <line x1="300" y1="0" x2="300" y2="320" stroke-dasharray="6,6" />
+    <line x1="600" y1="0" x2="600" y2="320" stroke-dasharray="6,6" />
+    <line x1="900" y1="0" x2="900" y2="320" stroke-dasharray="6,6" />
+  </g>
+
+  <!-- Glowing Search Wave Lines -->
+  <path d="M 50,260 Q 250,120 450,220 T 850,140 T 1150,240" fill="none" stroke="url(#accentGrad)" stroke-width="3" opacity="0.4" filter="url(#glow)"/>
+  <path d="M 50,100 Q 300,240 600,120 T 1150,160" fill="none" stroke="#38bdf8" stroke-width="1.5" opacity="0.3"/>
+
+  <!-- Floating Particles & Nodes -->
+  <circle cx="180" cy="140" r="4" fill="#38bdf8" class="floating-particle" />
+  <circle cx="480" cy="220" r="5" fill="#818cf8" class="floating-particle" style="animation-delay: 1s;" />
+  <circle cx="820" cy="110" r="6" fill="#c084fc" class="floating-particle" style="animation-delay: 2s;" />
+
+  <!-- Central Search UI Icon Container -->
+  <g transform="translate(100, 95)">
+    <!-- Animated Outer Pulse Ring -->
+    <circle cx="65" cy="65" r="22" fill="none" stroke="#38bdf8" stroke-width="2" class="pulse-ring" />
+    <!-- Glassmorphism Card Behind Icon -->
+    <rect x="0" y="0" width="130" height="130" rx="24" fill="#1e293b" fill-opacity="0.6" stroke="url(#accentGrad)" stroke-width="2" filter="url(#glow)"/>
+    
+    <!-- Search Magnifier Icon -->
+    <path d="M 45 45 A 20 20 0 1 0 73 73 L 92 92" fill="none" stroke="url(#accentGrad)" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="55" cy="55" r="14" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.9"/>
+  </g>
+
+  <!-- Text Header Content -->
+  <g transform="translate(260, 135)">
+    <text x="0" y="0" class="title">Awesome Search-as-a-Service 🔍⚡</text>
+    <text x="0" y="38" class="subtitle">THE DEFINITIVE ECOSYSTEM FOR SaaS &amp; OPEN-SOURCE SEARCH ENGINES</text>
+  </g>
+
+  <!-- Search Input Visual Decoration with Scanner -->
+  <g transform="translate(260, 205)">
+    <rect x="0" y="0" width="450" height="42" rx="21" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+    <text x="24" y="26" font-family="system-ui, sans-serif" font-size="15" fill="#64748b">Search hosted &amp; self-hosted tools...</text>
+    
+    <!-- Animated Scan Light -->
+    <g class="scan-line">
+      <rect x="120" y="6" width="60" height="30" rx="15" fill="url(#glowGrad)" />
+    </g>
+    <circle cx="424" cy="21" r="13" fill="url(#accentGrad)"/>
+    <path d="M 420 21 L 428 21 M 424 17 L 424 25" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Top Right Status Pill -->
+  <g transform="translate(980, 40)">
+    <rect x="0" y="0" width="170" height="34" rx="17" fill="#1e293b" stroke="#38bdf8" stroke-width="1" opacity="0.9"/>
+    <circle cx="20" cy="17" r="5" fill="#22c55e"/>
+    <text x="34" y="22" font-family="system-ui, sans-serif" font-weight="600" font-size="13" fill="#e2e8f0">UPDATED 2026</text>
+  </g>
+</svg>
